@@ -67,10 +67,16 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
     
     for release in $(seq 1 ${global_version}); do
     	for directory in dev eval train; do
+
+			sed -i "s:SPRING_INX/::g" ${!release_name}/${release_name}_${lang}_R${release}/${directory}/wav.scp
+			sed -i "s://:/:g" ${!release_name}/${release_name}_${lang}_R${release}/${directory}/wav.scp
+
     		if [ -d data/${directory}_R${release} ]; then
     			rm -r data/${directory}_R${release}
+
     			cp -r ${!release_name}/${release_name}_${lang}_R${release}/${directory} data/${directory}_R${release}
 	    	else
+
 	    		cp -r ${!release_name}/${release_name}_${lang}_R${release}/${directory} data/${directory}_R${release}	    		
     		fi
     		echo "
