@@ -12,13 +12,13 @@ test_sets="eval"
 #                SPRING_INX Available languages :- 
 #assamese, bengali, gujarati, hindi, marathi, kannada, malayalam, odia, punjabi, tamil
 lang="assamese"
-export lang=${lang^}
 
 asr_config=conf/train_asr.yaml
 inference_config=conf/decode_asr.yaml
 
 ./asr.sh \
     --lang "${lang}" \
+    --local_data_opts "--lang ${lang}" \
     --ngpu 1 \
     --nj 16 \
     --stage 1 \

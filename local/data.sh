@@ -11,6 +11,7 @@ log() {
 }
 SECONDS=0
 
+lang=
 release_name="SPRING_INX"
 
 log "$0 $*"
